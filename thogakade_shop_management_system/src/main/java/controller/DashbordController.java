@@ -1,0 +1,55 @@
+package controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class DashbordController {
+
+    Stage customerManagemt=new Stage();
+
+    @FXML
+    private Button custbtn;
+
+    @FXML
+    private Button itembtn;
+
+    @FXML
+    private Button orderbtn;
+
+    @FXML
+    private Button orderdetailbtn;
+
+    @FXML
+    void custbtnact(ActionEvent event) {
+        try {
+            customerManagemt.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/customerManagement.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        customerManagemt.show();
+
+
+    }
+
+    @FXML
+    void itembtnact(ActionEvent event) {
+
+    }
+
+    @FXML
+    void orderbtnact(ActionEvent event) {
+
+    }
+
+    @FXML
+    void orderdetailbtnact(ActionEvent event) {
+
+    }
+
+}
