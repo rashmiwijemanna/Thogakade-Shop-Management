@@ -1,5 +1,6 @@
 package controller;
 
+import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +11,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.CustomerManagementDetails;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class CustomerManagementFormController implements Initializable {
@@ -132,6 +137,18 @@ public class CustomerManagementFormController implements Initializable {
     }
 
     private void setSelectedValue(CustomerManagementDetails selectedValue){
+        txtId.setText(String.valueOf(selectedValue.getId()));
+        txtTitle.setValue(selectedValue.getTitle());
+        txtName.setText(selectedValue.getName());
+        txtDOB.setValue(selectedValue.getDOB());
+        txtSalary.setText(String.valueOf(selectedValue.getSalary()));
+        txtAddress.setText(selectedValue.getAddress());
+        txtCity.setText(selectedValue.getCity());
+        txtProvince.setText(selectedValue.getProvince());
+        txtPostalCode.setText(selectedValue.getPostalcode());
+
+
+
 
     }
 
@@ -141,6 +158,36 @@ public class CustomerManagementFormController implements Initializable {
     }
 
     public void btnAdd(ActionEvent actionEvent) {
+        String custId=txtId.getText();
+        String custTitle=txtTitle.getValue();
+        String custName=txtName.getText();
+        LocalDate custDOB=txtDOB.getValue();
+        double custSalary=Double.parseDouble(txtSalary.getText());
+        String custAddress=txtAddress.getText();
+        String custCity=txtCity.getText();
+        String custProvince=txtProvince.getText();
+        String custPostalCode=txtPostalCode.getText();
+
+        CustomerManagementDetails customerManagementDetails1=new CustomerManagementDetails(
+                txtId.getText(),
+                txtTitle.getValue(),
+                txtName.getText(),
+                txtDOB.getValue(),
+                Double.parseDouble(txtSalary.getText()),
+                txtAddress.getText(),
+                txtCity.getText(),
+                txtProvince.getText(),
+                txtPostalCode.getText()
+
+
+
+
+        );
+
+        customerManagementService.addCustomerDetails(customerManagementDetails1);
+        loadCustomerDetails();
+
+
 
 
     }

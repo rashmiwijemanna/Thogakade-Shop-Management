@@ -2,6 +2,8 @@ package model;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,7 +14,7 @@ public class CustomerManagementDetails {
     private String id;
     private String title;
     private String name;
-    private String DOB;
+    private LocalDate DOB;
     private double salary;
     private String address;
     private String city;
