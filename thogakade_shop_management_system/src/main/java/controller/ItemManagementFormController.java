@@ -103,6 +103,7 @@ public class ItemManagementFormController implements Initializable {
     @FXML
     void updateBtn(ActionEvent event) {
 
+
     }
 
     @Override
@@ -144,5 +145,9 @@ public class ItemManagementFormController implements Initializable {
 
 
     public void deleteBtn(ActionEvent actionEvent) {
+
+        itemManagementService.deleteItemDetails(txtCode.getText());
+
+        loadItemDetails();
     }
 }
