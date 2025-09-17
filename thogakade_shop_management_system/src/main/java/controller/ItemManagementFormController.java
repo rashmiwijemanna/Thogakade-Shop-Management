@@ -1,5 +1,6 @@
 package controller;
 
+import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +11,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.ItemManagementDetails;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ItemManagementFormController implements Initializable {
@@ -65,6 +69,23 @@ public class ItemManagementFormController implements Initializable {
 
     @FXML
     void addBtn(ActionEvent event) {
+        String item_code=txtCode.getText();
+        String description=txtDescription.getText();
+        String pack_size=txtPackSize.getText();
+        double unit_price= Double.parseDouble(txtUnitPrice.getText());
+        String QTY=txtQty.getText();
+
+        ItemManagementDetails itemManagementDetails1=new ItemManagementDetails(
+                txtCode.getText(),
+                txtDescription.getText(),
+                txtPackSize.getText(),
+                Double.parseDouble(txtUnitPrice.getText()),
+                txtQty.getText()
+        );
+
+        itemManagementService.addItemDetails(itemManagementDetails1);
+
+        loadItemDetails();
 
 
     }
@@ -120,6 +141,7 @@ public class ItemManagementFormController implements Initializable {
 
 
     }
+
 
     public void deleteBtn(ActionEvent actionEvent) {
     }

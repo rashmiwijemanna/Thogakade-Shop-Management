@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="412.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemManagementFormController">
    <children>
       <Label layoutX="47.0" layoutY="51.0" prefHeight="18.0" prefWidth="38.0" text="Code" />
@@ -30,7 +29,7 @@
         </columns>
       </TableView>
       <Button fx:id="ADD" layoutX="30.0" layoutY="357.0" mnemonicParsing="false" onAction="#addBtn" text="ADD" />
-      <Button fx:id="DELETE" layoutX="109.0" layoutY="357.0" mnemonicParsing="false" onAction="#clearBtn" text="DELETE" />
+      <Button fx:id="DELETE" layoutX="109.0" layoutY="357.0" mnemonicParsing="false" onAction="#deleteBtn" text="DELETE" />
       <Button fx:id="UPDATE" layoutX="188.0" layoutY="357.0" mnemonicParsing="false" onAction="#updateBtn" text="UPDATE" />
       <Button fx:id="CLEAR" layoutX="280.0" layoutY="357.0" mnemonicParsing="false" onAction="#clearBtn" text="CLEAR" />
    </children>
