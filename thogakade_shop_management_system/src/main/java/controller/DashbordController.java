@@ -13,6 +13,7 @@ public class DashbordController {
 
     Stage customerManagemt=new Stage();
     Stage itemManagement=new Stage();
+    Stage orderManagement=new Stage();
 
     @FXML
     private Button custbtn;
@@ -52,6 +53,13 @@ public class DashbordController {
 
     @FXML
     void orderbtnact(ActionEvent event) {
+        try {
+            orderManagement.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/orderManagement.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        orderManagement.show();
+
 
     }
 

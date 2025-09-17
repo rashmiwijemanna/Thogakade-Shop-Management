@@ -17,7 +17,7 @@
       <TextField fx:id="txtId" layoutX="125.0" layoutY="59.0" prefHeight="10.0" prefWidth="138.0" />
       <DatePicker fx:id="txtDate" layoutX="125.0" layoutY="97.0" />
       <TextField fx:id="txtCustId" layoutX="127.0" layoutY="133.0" prefHeight="10.0" prefWidth="138.0" />
-      <TableView layoutX="161.0" layoutY="176.0" prefHeight="200.0" prefWidth="278.0">
+      <TableView fx:id="orderManagementTbl" layoutX="161.0" layoutY="176.0" prefHeight="200.0" prefWidth="278.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="75.0" text="Id" />
           <TableColumn fx:id="colDate" prefWidth="104.0" text="Order Date" />

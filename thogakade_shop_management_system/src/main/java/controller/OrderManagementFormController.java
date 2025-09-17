@@ -1,16 +1,23 @@
 package controller;
 
+import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.OrderManagementDetails;
 
-public class OrderManagementFormController  {
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class OrderManagementFormController implements Initializable {
     ObservableList<OrderManagementDetails>orderManagementDetails= FXCollections.observableArrayList();
     OrderManagementService orderManagementService=new OrderManagementController();
 
@@ -34,6 +41,9 @@ public class OrderManagementFormController  {
 
     @FXML
     private TableColumn<?, ?> colId;
+
+    @FXML
+    private TableView<OrderManagementDetails> orderManagementTbl;
 
     @FXML
     private TextField txtCustId;
@@ -64,4 +74,33 @@ public class OrderManagementFormController  {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colCustId.setCellValueFactory(new PropertyValueFactory<>("custId"));
+
+        loadOrderTbl();
+        
+        orderManagementTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue,   newValue) -> {
+            if (newValue != null){
+                setSelectedValue(newValue);
+            }
+        });
+
+
+
+    }
+    private void setSelectedValue(OrderManagementDetails selectedValue){
+        txtId.setText(selectedValue.getId());
+        txtDate.setValue(selectedValue.getDate());
+        txtCustId.setText(selectedValue.getCustId());
+    }
+
+    private void loadOrderTbl(){
+//        String SQL="INSERT INTO Orders2(OrderID, OrderDate, CustID)VALUES(?,?,?);";
+        orderManagementDetails.clear();
+        orderManagementTbl.setItems(orderManagementService.getAllOrderDetails());
+
+    }
 }
