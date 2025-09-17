@@ -5,5 +5,6 @@ import model.CustomerManagementDetails;
 
 public interface CustomerManagementService {
    void addCustomerDetails(CustomerManagementDetails customerManagementDetails);
+   void deleteCustomerDetails(String id);
    ObservableList<CustomerManagementDetails> getAllCustomerDetails();
 }

@@ -37,6 +37,22 @@ public class CustomerManagementController implements CustomerManagementService {
     }
 
     @Override
+    public void deleteCustomerDetails(String id) {
+        Connection connection=null;
+        try {
+            connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Customer WHERE CustId = ?");
+            preparedStatement.setObject(1,id);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    @Override
     public ObservableList<CustomerManagementDetails> getAllCustomerDetails() {
 
         ObservableList<CustomerManagementDetails>  customerManagementDetails= FXCollections.observableArrayList();
