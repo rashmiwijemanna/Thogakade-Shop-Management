@@ -12,6 +12,7 @@ import java.io.IOException;
 public class DashbordController {
 
     Stage customerManagemt=new Stage();
+    Stage itemManagement=new Stage();
 
     @FXML
     private Button custbtn;
@@ -39,6 +40,13 @@ public class DashbordController {
 
     @FXML
     void itembtnact(ActionEvent event) {
+        try {
+            itemManagement.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/itemManagement.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        itemManagement.show();
+
 
     }
 

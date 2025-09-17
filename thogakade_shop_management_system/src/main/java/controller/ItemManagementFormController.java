@@ -1,17 +1,20 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.ItemManagementDetails;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ItemManagementFormController implements Initializable {
+    ObservableList<ItemManagementDetails>itemManagementDetails= FXCollections.observableArrayList();
+    ItemManagementService itemManagementService=new ItemManagementController();
 
     @FXML
     private Button ADD;
@@ -41,7 +44,7 @@ public class ItemManagementFormController implements Initializable {
     private TableColumn<?, ?> colUnitPrice;
 
     @FXML
-    private TableView<?> itemManagementTbl;
+    private TableView<ItemManagementDetails> itemManagementTbl;
 
     @FXML
     private TextField txtCode;
@@ -52,6 +55,8 @@ public class ItemManagementFormController implements Initializable {
     @FXML
     private TextField txtPackSize;
 
+
+
     @FXML
     private TextField txtQty;
 
@@ -60,6 +65,7 @@ public class ItemManagementFormController implements Initializable {
 
     @FXML
     void addBtn(ActionEvent event) {
+
 
     }
 
@@ -75,6 +81,41 @@ public class ItemManagementFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colPackSize.setCellValueFactory(new PropertyValueFactory<>("packSize"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
 
+        loadItemDetails();
+
+        itemManagementTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (newValue != null){
+                setSelectedValue(newValue);
+            }
+        });
+
+
+
+
+    }
+
+    private void loadItemDetails(){
+        itemManagementDetails.clear();
+        itemManagementTbl.setItems(itemManagementService.getAllItemDetails());
+
+    }
+
+    private void setSelectedValue(ItemManagementDetails selectedValue){
+        txtCode.setText(selectedValue.getCode());
+        txtDescription.setText((selectedValue.getDescription()));
+        txtPackSize.setText(selectedValue.getPackSize());
+        txtUnitPrice.setText(String.valueOf(selectedValue.getUnitPrice()));
+        txtQty.setText(selectedValue.getQty());
+
+
+    }
+
+    public void deleteBtn(ActionEvent actionEvent) {
     }
 }
