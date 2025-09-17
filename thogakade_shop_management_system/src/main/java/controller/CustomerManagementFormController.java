@@ -92,6 +92,15 @@ public class CustomerManagementFormController implements Initializable {
 
     @FXML
     void btnClear(ActionEvent event) {
+        txtId.setText(null);
+        txtTitle.setValue(null);
+        txtName.setText(null);
+        txtDOB.setValue(null);
+        txtSalary.setText(null);
+        txtAddress.setText(null);
+        txtCity.setText(null);
+        txtProvince.setText(null);
+        txtPostalCode.setText(null);
 
     }
 
