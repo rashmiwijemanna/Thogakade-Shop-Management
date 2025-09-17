@@ -34,4 +34,19 @@ public class OrderManagementController implements OrderManagementService{
         return orderManagementDetails1;
 
     }
+
+    @Override
+    public void addOrderDetails(OrderManagementDetails orderManagementDetails) {
+        String SQL="INSERT INTO Orders2(OrderID, OrderDate, CustID)VALUES(?,?,?);";
+        try {
+            Connection connection=DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setObject(1,orderManagementDetails.getId());
+            preparedStatement.setObject(2,orderManagementDetails.getDate());
+            preparedStatement.setObject(3,orderManagementDetails.getCustId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

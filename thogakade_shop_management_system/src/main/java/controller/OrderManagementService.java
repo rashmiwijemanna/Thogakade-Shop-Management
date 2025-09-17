@@ -5,4 +5,5 @@ import model.OrderManagementDetails;
 
 public interface OrderManagementService {
     ObservableList<OrderManagementDetails>getAllOrderDetails();
+    void addOrderDetails(OrderManagementDetails orderManagementDetails);
 }
