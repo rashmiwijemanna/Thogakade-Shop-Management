@@ -71,6 +71,11 @@ public class ItemManagementFormController implements Initializable {
 
     @FXML
     void clearBtn(ActionEvent event) {
+        txtCode.setText(null);
+        txtDescription.setText(null);
+        txtPackSize.setText(null);
+        txtUnitPrice.setText(null);
+        txtQty.setText(null);
 
     }
 
