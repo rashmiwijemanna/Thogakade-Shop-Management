@@ -74,11 +74,15 @@ public class OrderManagementFormController implements Initializable {
 
     @FXML
     void clearBtn(ActionEvent event) {
+        txtId.setText(null);
+        txtDate.setValue(null);
+        txtCustId.setText(null);
 
     }
 
     @FXML
     void deletBtn(ActionEvent event) {
+
 
     }
 
