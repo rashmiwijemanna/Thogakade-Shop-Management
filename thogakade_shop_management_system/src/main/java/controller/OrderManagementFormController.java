@@ -82,6 +82,8 @@ public class OrderManagementFormController implements Initializable {
 
     @FXML
     void deletBtn(ActionEvent event) {
+        orderManagementService.deleteOrderDetails(txtId.getText());
+        loadOrderTbl();
 
 
     }

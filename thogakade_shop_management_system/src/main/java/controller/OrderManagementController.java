@@ -49,4 +49,18 @@ public class OrderManagementController implements OrderManagementService{
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void deleteOrderDetails(String id) {
+        String SQL="DELETE FROM Orders2 WHERE OrderId = ?";
+        try {
+            Connection connection=DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setObject(1,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
