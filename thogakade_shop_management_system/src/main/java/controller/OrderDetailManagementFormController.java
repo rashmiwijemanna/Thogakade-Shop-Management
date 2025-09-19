@@ -92,6 +92,18 @@ public class OrderDetailManagementFormController implements Initializable {
 
     @FXML
     void btnUpdate(ActionEvent event) {
+        String order_id=txtOrderId.getText();
+        String item_code=txtItemCode.getText();
+        int order_qty=Integer.parseInt(txtOrderQty.getText());
+        int discount=Integer.parseInt(txtDiscount.getText());
+        OrderDetailManagementDetails orderDetailManagementDetails2=new OrderDetailManagementDetails(
+                txtOrderId.getText(),
+                txtItemCode.getText(),
+                Integer.parseInt(txtOrderQty.getText()),
+                Integer.parseInt(txtDiscount.getText())
+        );
+        orderDetailManagementService.updateOrderDetails(orderDetailManagementDetails2);
+        loadOrderDetail();
 
     }
     private void setSelectedValue(OrderDetailManagementDetails selectedValue){
