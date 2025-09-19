@@ -8,4 +8,5 @@ public interface OrderManagementService {
     void addOrderDetails(OrderManagementDetails orderManagementDetails);
     void deleteOrderDetails(String id);
     void updateOrderDetails(OrderManagementDetails orderManagementDetails);
+
 }
