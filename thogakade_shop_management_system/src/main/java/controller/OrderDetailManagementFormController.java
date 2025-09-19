@@ -66,6 +66,15 @@ public class OrderDetailManagementFormController implements Initializable {
     @FXML
     void btnAdd(ActionEvent event) {
 
+        OrderDetailManagementDetails orderDetailManagementDetails1=new OrderDetailManagementDetails(
+                txtOrderId.getText(),
+                 txtItemCode.getText(),
+                  Integer.parseInt(txtOrderQty.getText()),
+                 Integer.parseInt(txtDiscount.getText())
+        );
+        orderDetailManagementService.addOrderDetail(orderDetailManagementDetails1);
+        loadOrderDetail();
+
 
     }
 
