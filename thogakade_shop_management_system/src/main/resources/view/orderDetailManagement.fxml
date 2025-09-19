@@ -18,7 +18,7 @@
       <TextField fx:id="txtItemCode" layoutX="112.0" layoutY="88.0" />
       <TextField fx:id="txtOrderQty" layoutX="112.0" layoutY="127.0" />
       <TextField fx:id="txtDiscount" layoutX="111.0" layoutY="162.0" />
-      <TableView layoutX="272.0" layoutY="47.0" prefHeight="182.0" prefWidth="325.0">
+      <TableView fx:id="orderDetailManagementTbl" layoutX="272.0" layoutY="47.0" prefHeight="182.0" prefWidth="325.0">
         <columns>
           <TableColumn fx:id="colOrderId" prefWidth="85.60003662109375" text="Order Id" />
           <TableColumn fx:id="colItemCode" prefWidth="77.5999755859375" text="Item Code" />
