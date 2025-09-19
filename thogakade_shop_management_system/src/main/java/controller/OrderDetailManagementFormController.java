@@ -80,6 +80,10 @@ public class OrderDetailManagementFormController implements Initializable {
 
     @FXML
     void btnClear(ActionEvent event) {
+        txtOrderId.setText(null);
+        txtItemCode.setText(null);
+        txtOrderQty.setText(null);
+        txtDiscount.setText(null);
 
     }
 
