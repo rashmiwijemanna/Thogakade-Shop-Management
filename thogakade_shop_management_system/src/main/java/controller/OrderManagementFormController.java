@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class OrderManagementFormController implements Initializable {
@@ -74,16 +75,36 @@ public class OrderManagementFormController implements Initializable {
 
     @FXML
     void clearBtn(ActionEvent event) {
+        txtId.setText(null);
+        txtDate.setValue(null);
+        txtCustId.setText(null);
 
     }
 
     @FXML
     void deletBtn(ActionEvent event) {
+        orderManagementService.deleteOrderDetails(txtId.getText());
+        loadOrderTbl();
+
 
     }
 
     @FXML
     void updateBtn(ActionEvent event) {
+        String order_id=txtId.getText();
+        LocalDate order_date=txtDate.getValue();
+        String cust_id=txtCustId.getText();
+
+
+        OrderManagementDetails orderManagementDetails1=new OrderManagementDetails(
+                txtId.getText(),
+                txtDate.getValue(),
+                txtCustId.getText()
+
+        );
+        orderManagementService.updateOrderDetails(orderManagementDetails1);
+
+        loadOrderTbl();
 
     }
 
